@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ExpenseTracker.Models\ExpenseTracker.Models.csproj" />
+    <ProjectReference Include="..\ExpenseTracker.Services\ExpenseTracker.Services.csproj" />
+  </ItemGroup>
+
 </Project>
