@@ -57,7 +57,7 @@ while (true)
         case "4":
             var total = expenseManager.GetMonthlyTotal(DateTime.Now.Year, DateTime.Now.Month);
             Console.WriteLine($"This month's total: {total:C}");
-            Console.WriteLine(budget.IsOverLimit(total) ? "⚠️ Over budget!" : "✅ Within budget.");
+            Console.WriteLine(budget.IsOverLimit(total) ? "Over budget!" : "Within budget.");
             break;
 
         case "5":
