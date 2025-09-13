@@ -1,4 +1,5 @@
-﻿using ExpenseTracker.Models.Requests;
+﻿using ExpenseTracker.Core.Models;
+using ExpenseTracker.Core.Models.Requests;
 
 namespace ExpenseTracker.Models.Services;
 

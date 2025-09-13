@@ -1,4 +1,4 @@
-﻿namespace ExpenseTracker.Models.Requests;
+﻿namespace ExpenseTracker.Core.Models.Requests;
 
 public class AddExpenseModel
 {

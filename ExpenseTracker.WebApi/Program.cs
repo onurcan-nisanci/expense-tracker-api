@@ -1,5 +1,5 @@
-using ExpenseTracker.Models;
-using ExpenseTracker.Models.Requests;
+using ExpenseTracker.Core.Models;
+using ExpenseTracker.Core.Models.Requests;
 using ExpenseTracker.Services;
 
 var builder = WebApplication.CreateBuilder(args);

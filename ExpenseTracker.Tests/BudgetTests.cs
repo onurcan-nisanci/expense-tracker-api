@@ -1,4 +1,4 @@
-﻿using ExpenseTracker.Models;
+﻿using ExpenseTracker.Core.Models;
 
 namespace ExpenseTracker.Tests;
 
