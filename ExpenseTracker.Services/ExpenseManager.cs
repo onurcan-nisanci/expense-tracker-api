@@ -1,5 +1,4 @@
 ﻿using ExpenseTracker.Core.Models;
-using ExpenseTracker.Core.Models.Requests;
 using ExpenseTracker.Models.Services;
 
 namespace ExpenseTracker.Services;
@@ -15,19 +14,9 @@ public class ExpenseManager : IExpenseManager
         _expenses = _storageService.Load();
     }
 
-    public void AddExpense(AddExpenseModel model)
+    public void AddExpense(Expense expense)
     {
-        var newExpense = new Expense()
-        {
-            Name = model.Name,
-            Amount = model.Amount,
-            Category = model.Category,
-            Description = model.Description,
-            Date = DateTime.Now,
-            Id = model.Id
-        };
-
-        _expenses.Add(newExpense);
+        _expenses.Add(expense);
         _storageService.Save(_expenses);
     }
 

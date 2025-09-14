@@ -1,11 +1,10 @@
 ﻿using ExpenseTracker.Core.Models;
-using ExpenseTracker.Core.Models.Requests;
 
 namespace ExpenseTracker.Models.Services;
 
 public interface IExpenseManager
 {
-    void AddExpense(AddExpenseModel model);
+    void AddExpense(Expense model);
     void RemoveExpense(Guid Id);
     void RemoveExpenseByName(string name);
     List<Expense> GetExpensesByCategory(string category);

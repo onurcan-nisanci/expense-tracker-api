@@ -1,4 +1,4 @@
-﻿using ExpenseTracker.Core.Models.Requests;
+﻿using ExpenseTracker.Core.Models;
 using ExpenseTracker.Services;
 
 namespace ExpenseTracker.Tests;
@@ -15,7 +15,7 @@ public class ExpenseManagerTests
     [Fact]
     public void AddExpense_ShouldIncreaseCount()
     {
-        var expense = new AddExpenseModel { Amount = 50, Category = "Food", Description = "Lunch" };
+        var expense = new Expense { Amount = 50, Category = "Food", Description = "Lunch" };
 
         _manager.AddExpense(expense);
 
@@ -25,7 +25,7 @@ public class ExpenseManagerTests
     [Fact]
     public void RemoveExpense_ShouldRemoveCorrectExpense()
     {
-        var expense = new AddExpenseModel { Amount = 100, Category = "Travel", Description = "Taxi" };
+        var expense = new Expense { Amount = 100, Category = "Travel", Description = "Taxi" };
         _manager.AddExpense(expense);
 
         var latestExpense = _manager.GetLatestExpense();
@@ -38,8 +38,8 @@ public class ExpenseManagerTests
     [Fact]
     public void GetExpensesByCategory_ShouldReturnFilteredExpenses()
     {
-        _manager.AddExpense(new AddExpenseModel { Amount = 20, Category = "Food" });
-        _manager.AddExpense(new AddExpenseModel { Amount = 40, Category = "Travel" });
+        _manager.AddExpense(new Expense { Amount = 20, Category = "Food" });
+        _manager.AddExpense(new Expense { Amount = 40, Category = "Travel" });
 
         var foodExpenses = _manager.GetExpensesByCategory("Food");
 
@@ -50,8 +50,8 @@ public class ExpenseManagerTests
     [Fact]
     public void GetMonthlyTotal_ShouldReturnCorrectSum()
     {
-        _manager.AddExpense(new AddExpenseModel { Amount = 30, Category = "Food" });
-        _manager.AddExpense(new AddExpenseModel { Amount = 70, Category = "Food" });
+        _manager.AddExpense(new Expense { Amount = 30, Category = "Food" });
+        _manager.AddExpense(new Expense { Amount = 70, Category = "Food" });
 
         decimal total = _manager.GetMonthlyTotal(DateTime.Now.Year, DateTime.Now.Month);
 
