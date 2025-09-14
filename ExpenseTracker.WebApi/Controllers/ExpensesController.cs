@@ -1,6 +1,6 @@
-﻿using ExpenseTracker.Core.Models.Services;
-using ExpenseTracker.Core.Models;
+﻿using ExpenseTracker.Core.Models;
 using Microsoft.AspNetCore.Mvc;
+using ExpenseTracker.Core.Models.Services;
 
 namespace ExpenseTracker.WebApi.Controllers;
 
@@ -8,9 +8,9 @@ namespace ExpenseTracker.WebApi.Controllers;
 [Route("api/[controller]")]
 public class ExpensesController : ControllerBase
 {
-    private readonly IRepository<Expense> _expenseRepo;
+    private readonly IExpenseRepository _expenseRepo;
 
-    public ExpensesController(IRepository<Expense> expenseRepo)
+    public ExpensesController(IExpenseRepository expenseRepo)
     {
         _expenseRepo = expenseRepo;
     }
@@ -27,5 +27,12 @@ public class ExpensesController : ControllerBase
     {
         await _expenseRepo.AddAsync(expense);
         return Ok(expense);
+    }
+
+    [HttpGet("category/{category}")]
+    public async Task<IActionResult> GetByCategory(string category)
+    {
+        var expenses = await _expenseRepo.GetByCategoryAsync(category);
+        return Ok(expenses);
     }
 }

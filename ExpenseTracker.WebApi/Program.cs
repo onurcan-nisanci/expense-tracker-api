@@ -11,7 +11,7 @@ builder.Services.AddDbContext<ExpenseTrackerDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Register generic repository
-builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
