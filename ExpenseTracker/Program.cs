@@ -51,8 +51,7 @@ while (true)
                 Name = name,
                 Amount = amount,
                 Category = category,
-                Description = desc,
-                Date = DateTime.Now
+                Description = desc
             };
 
             await expenseRepo.AddAsync(newExpense);
@@ -60,6 +59,9 @@ while (true)
             break;
 
         case "2":
+            foreach (var exp in await expenseRepo.GetAllAsync())
+                Console.WriteLine(exp);
+
             Console.Write("Name: ");
             var expenseName = Console.ReadLine() ?? string.Empty;
             var deleteResult = await expenseRepo.DeleteAllByNameAsync(expenseName);
