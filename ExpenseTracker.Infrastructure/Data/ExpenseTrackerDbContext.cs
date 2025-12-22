@@ -1,14 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ExpenseTracker.Core.Models;
+﻿using ExpenseTracker.Core.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace ExpenseTracker.Infrastructure.Data;
 
-public class ExpenseTrackerDbContext : DbContext
+public class ExpenseTrackerDbContext : IdentityDbContext<ApplicationUser>
 {
     public ExpenseTrackerDbContext(DbContextOptions<ExpenseTrackerDbContext> options)
         : base(options) { }
 
-    public DbSet<Expense> Expenses { get; set; }
+    public DbSet<Expense> Expenses => Set<Expense>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

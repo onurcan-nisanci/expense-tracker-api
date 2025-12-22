@@ -1,6 +1,7 @@
 ﻿using ExpenseTracker.Core.Models;
-using Microsoft.AspNetCore.Mvc;
 using ExpenseTracker.Core.Models.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ExpenseTracker.WebApi.Controllers;
 
@@ -22,6 +23,7 @@ public class ExpensesController : ControllerBase
         return Ok(expenses);
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Add([FromBody] Expense expense)
     {
@@ -29,6 +31,7 @@ public class ExpensesController : ControllerBase
         return Ok(expense);
     }
 
+    [Authorize]
     [HttpGet("category/{category}")]
     public async Task<IActionResult> GetByCategory(string category)
     {
