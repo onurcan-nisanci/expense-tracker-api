@@ -16,6 +16,7 @@ public class ExpensesController : ControllerBase
         _expenseRepo = expenseRepo;
     }
 
+    [Authorize]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
