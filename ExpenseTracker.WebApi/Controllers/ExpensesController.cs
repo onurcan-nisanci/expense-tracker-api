@@ -39,4 +39,12 @@ public class ExpensesController : ControllerBase
         var expenses = await _expenseRepo.GetByCategoryAsync(category);
         return Ok(expenses);
     }
+
+    [Authorize]
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        await _expenseRepo.DeleteAsync(id);
+        return NoContent();
+    }
 }

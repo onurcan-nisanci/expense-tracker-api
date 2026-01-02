@@ -15,7 +15,7 @@ public class EfRepository<T> : IRepository<T> where T : class
 
     public async Task<List<T>> GetAllAsync() => await _db.Set<T>().ToListAsync();
 
-    public async Task<T?> GetByIdAsync(int id) => await _db.Set<T>().FindAsync(id);
+    public async Task<T?> GetByIdAsync(Guid id) => await _db.Set<T>().FindAsync(id);
 
     public async Task AddAsync(T entity)
     {
@@ -29,10 +29,10 @@ public class EfRepository<T> : IRepository<T> where T : class
         await _db.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(Guid id)
     {
         var entity = await GetByIdAsync(id);
-        if (entity != null)
+        if (entity is not null)
         {
             _db.Set<T>().Remove(entity);
             await _db.SaveChangesAsync();
