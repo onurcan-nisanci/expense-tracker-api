@@ -16,6 +16,7 @@ builder.Services.AddDbContext<ExpenseTrackerDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
+builder.Services.AddScoped<IRepository<Category>, EfRepository<Category>>();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ExpenseTrackerDbContext>()
